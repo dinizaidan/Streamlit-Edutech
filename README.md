@@ -70,12 +70,17 @@ This section details the core machine learning workflow, which involves data pro
 This project features an interactive web application built with Streamlit, which serves as a deployment interface for the trained machine learning model. This application allows users to predict the likelihood of a student Graduating or Dropping out based on custom input data, providing real-time insights.
 
 **Run the Streamlit Application**
-The saved model files (`logistic_regression_model.pkl`, `onehot_encoder.joblib`, `standard_scaler.joblib`) must located in the same directory as `app.py`.
+The Streamlit application can be run in two ways:
 
+- **Running Locally**
+Here, the saved model files (`logistic_regression_model.pkl`, `onehot_encoder.joblib`, `standard_scaler.joblib`) must located in the same directory as `app.py`.  
 ```bash
 streamlit run app.py
 ```
 The application will automatically open in web browser (typically at `http://localhost:8501`)
+
+- **Accessing the Deployed Application (Streamlit Community Cloud)**
+This application is deployed on Streamlit Community Cloud for easy access. You can view and interact with the live application directly via this URL: [Streamlit Edutech](https://app-edutech.streamlit.app/)
 
 **Application Features**
 The Streamlit application provides an intuitive user interface where users can input various student demographic, academic, and external factor details:
