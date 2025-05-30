@@ -1,5 +1,5 @@
 altair==5.5.0
-asttokens==2.0.5
+asttokens==2.1.0
 attrs==25.3.0
 blinker==1.9.0
 cachetools==5.5.2
