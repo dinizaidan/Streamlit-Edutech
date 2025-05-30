@@ -21,7 +21,7 @@ pip install -r requirements.txt
 pip install pandas scikit-learn sqlalchemy matplotlib seaborn pymysql streamlit joblib
 ```
 
-**Data Source**: (Data of Jaya Jaya Maju Institute)[https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/refs/heads/main/students_performance/data.csv]
+**Data Source**: [Data of Jaya Jaya Maju Institute](https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/refs/heads/main/students_performance/data.csv)
 This dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. The data is used to build classification models to predict students' dropout and academic sucess.
 
 **Database Configuration**
