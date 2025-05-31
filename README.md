@@ -1,57 +1,65 @@
-# Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
+# Student Dropout Analysis and Prediction
 
-## Business Understanding
+## Project Summary
 This project is a submission for Dicoding's Data Science Level Expert class. The dataset contains information about Jaya Jaya Institute, a fictitious higher education institution which known for producing graduates with an excellent reputation. The problem is that the current dropout rate is considerably high, which presents a critical challenge. This project aims to identify the factors contributing to student dropouts, enabling the institute to offer targeted support and reduce attrition.
 
-### Permasalahan Bisnis
-The high student dropout rate at Jaya Jaya Institute threatens its reputation and long-term sustainability.
+## Technologies Used
 
-### Cakupan Proyek
-This project explores key contributors to student dropout using machine learning techniques—Random Forest and Logistic Regression—and communicates findings through an interactive dashboard.
+| Category | Tools/Packages |
+|---|---|
+| Development | Python (via Conda), VSCode |
+| Modeling | pandas, scikit-learn, matplotlib, seaborn, joblib |
+| Application | Streamlit |
+| Dashboard | Metabase |
+| Database | MySQL, SQLAlchemy, pymysql |
+| Containers | Docker |
 
-### Persiapan
+## Business Understanding and Problem Statement
+
+Student dropout is a major concern for Jaya Jaya Institute, affecting institutional reputation, resource allocation, and overall student success. This project aims to:
+- Identify key factors contributing to student dropout.
+- Build predictive models (Logistic Regression, Random Forest) to forecast student outcomes.
+- Visualize actionable insights through a dashboard (Metabase) and an interactive application (Streamlit).
+
+## Project Scope
+
+- Focus on supervised machine learning (Logistic Regression, Random Forest) for student outcome prediction.
+- Develop an interactive web application with Streamlit for real-time predictions.
+- Build a user-friendly business dashboard with Metabase for strategic insights.
+- Use Docker for simplified deployment of Metabase.
+- Store and query processed data using MySQL.
+
+**Data Source**: [Data of Jaya Jaya Maju Institute](https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/refs/heads/main/students_performance/data.csv)
+
+### User Installation & Setup
+
+**Prerequisites**
+* [Anaconda/Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+* VSCode
+* Python 3.10
+* Docker
+* Git
 
 **Setup environment**:
-Create and use the `sub2` environment, then install the necessary libraries:
-
 ```bash
-conda create -n sub2 python=3.10    # Create environment named sub2 with python 3.10
-conda activate sub2                 # Activate the environment
+conda create -n edu python=3.10    # Create environment named edu with python 3.10
+conda activate edu                 # Activate the environment
 pip install -r requirements.txt     
 pip install pandas scikit-learn sqlalchemy matplotlib seaborn pymysql streamlit joblib
 ```
 
-**Data Source**: [Data of Jaya Jaya Maju Institute](https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/refs/heads/main/students_performance/data.csv)
-This dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. The data is used to build classification models to predict students' dropout and academic sucess.
-
-**Database Configuration**
-1. Connect to MySQL using SQLAlchemy:
-```python
-engine = create_engine('mysql+pymysql://username:password@localhost:3306/database_name')
-```
-
-2. Store data in MySQL
-```python
-table_name = 'student'
-data_dashboard.to_sql(table_name, con=engine, if_exists='replace', index=False)
-```
-
-3. Launch Metabase via Docker
+**Requirements File**
+`requirements.txt` was generated after completing the project using:
 ```bash
-docker run -d -p 3000:3000 --name metabase metabase/metabase
+pip freeze > requirements.txt
 ```
-
-4. Access the dashboard:
-- URL: http://localhost:3000
-- Credentials:
-email:: dininadwah@gmail.com
-password : adin02
-
+it includes all packages used.
 
 ## Machine Learning Prototype
-This section details the core machine learning workflow, which involves data processing, model training, and evaluation. All steps are primarily implemented and documented within the `notebook.ipynb` file.
+This section details the core machine learning workflow, which involves data processing, model training, and evaluation.
 
-### 1. Data Preprocessing (notebook.ipynb)
+### Data Analysis (notebook.ipynb)
+**Data Understanding**
 - Simplifying categories (mapping)
 - Aggregate relevant columns
 - Drop columns used in aggregation
@@ -60,14 +68,41 @@ This section details the core machine learning workflow, which involves data pro
 - Check for missing and duplicate values
 - Duplicate data for analysis and dashboard
 - Encode, scale, and split data
-
-### 2. Modeling and Evaluation (notebook.ipynb)
+**Modeling and Evaluation**
 - Build models using Random Forest and Logistic Regression
 - Evaluate model performance
 - Save the trained models
 
+### Database Configuration 
+
+**1. Connect to MySQL using SQLAlchemy**
+```python
+engine = create_engine('mysql+pymysql://username:password@localhost:3306/database_name')
+```
+
+**2. Store data in MySQL**
+```python
+table_name = 'student'
+data_dashboard.to_sql(table_name, con=engine, if_exists='replace', index=False)
+```
+
+**3. Launch Metabase via Docker**
+```bash
+docker run -d -p 3000:3000 --name metabase metabase/metabase
+```
+
+**4. Access the dashboard**
+- URL: http://localhost:3000
+
+## Business Dashboard
+**Key Insights from dashboard**
+✔ Students most likely to graduate are financially stable, enroll early, and have strong socioeconomic support.
+✔ Dropout risk increases with financial stress, moderate socioeconomic risk, and later age at enrollment.
+✔ Male students have slightly higher dropout rates compared to females.
+✔ Students with “no identified risk” still show notable dropout rates, indicating hidden challenges.
+
 ### 3. Streamlit Prediction Application (app.py)
-This project features an interactive web application built with Streamlit, which serves as a deployment interface for the trained machine learning model. This application allows users to predict the likelihood of a student Graduating or Dropping out based on custom input data, providing real-time insights.
+This application allows users to predict the likelihood of a student Graduating or Dropping out based on custom input data, providing real-time insights.
 
 **Run the Streamlit Application**
 The Streamlit application can be run in two ways:
@@ -93,14 +128,6 @@ The Streamlit application provides an intuitive user interface where users can i
 After entering the data, users can click the "Predict Student Performance" button to receive a prediction (Graduate or Dropout) along with the probabilities for each outcome.
 
 This application serves as a practical demonstration of how machine learning models can be utilized to deliver actionable insights and predictions to stakeholders.
-
-## Business Dashboard
-**Key Insights from dashboard**
-✔ Students most likely to graduate are financially stable, enroll early, and have strong socioeconomic support.
-✔ Dropout risk increases with financial stress, moderate socioeconomic risk, and later age at enrollment.
-✔ Male students have slightly higher dropout rates compared to females.
-✔ Students with “no identified risk” still show notable dropout rates, indicating hidden challenges.
-
 
 ## Conclusion
 
@@ -200,3 +227,8 @@ Tools & Technologies:
 - **VSCode** as the development environment
 
 This project serves as a strategic initiative to help the institution design preventive measures against student dropout using actionable, data-driven insights.
+
+**Contact**
+For any questions or feedback:
+`dininadwah@gmail.com`
+`https://www.linkedin.com/in/dznadwah/`
