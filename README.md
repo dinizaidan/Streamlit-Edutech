@@ -94,14 +94,13 @@ docker run -d -p 3000:3000 --name metabase metabase/metabase
 **4. Access the dashboard**
 - URL: http://localhost:3000
 
-## Business Dashboard
 **Key Insights from dashboard**
 ✔ Students most likely to graduate are financially stable, enroll early, and have strong socioeconomic support.
 ✔ Dropout risk increases with financial stress, moderate socioeconomic risk, and later age at enrollment.
 ✔ Male students have slightly higher dropout rates compared to females.
 ✔ Students with “no identified risk” still show notable dropout rates, indicating hidden challenges.
 
-### 3. Streamlit Prediction Application (app.py)
+### Streamlit Prediction Application (app.py)
 This application allows users to predict the likelihood of a student Graduating or Dropping out based on custom input data, providing real-time insights.
 
 **Run the Streamlit Application**
